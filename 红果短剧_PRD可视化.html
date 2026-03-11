@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>红果短剧 — 评论区原生广告 PRD V2.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #1d1d1f;
+  --gray-1: #86868b;
+  --gray-2: #d2d2d7;
+  --gray-3: #f5f5f7;
+  --white: #ffffff;
+  --blue: #0071e3;
+  --blue-light: #e8f2ff;
+  --red: #ff3b30;
+  --red-light: #fff0ef;
+  --green: #34c759;
+  --green-light: #edfbf1;
+  --orange: #ff9500;
+  --orange-light: #fff8ee;
+  --purple: #af52de;
+  --purple-light: #f8effd;
+  --teal: #5ac8fa;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== NAV ===== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(0,0,0,0.08);
+}
+nav .nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; height: 52px;
+}
+nav .nav-logo {
+  font-weight: 700; font-size: 16px; color: var(--black);
+  display: flex; align-items: center; gap: 8px;
+}
+nav .nav-logo span { color: var(--red); }
+nav .nav-links { display: flex; gap: 28px; }
+nav .nav-links a {
+  font-size: 13px; color: var(--gray-1); text-decoration: none;
+  font-weight: 400; transition: color 0.2s;
+}
+nav .nav-links a:hover { color: var(--black); }
+
+/* ===== HERO ===== */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 120px 24px 80px;
+  background: linear-gradient(180deg, var(--white) 0%, var(--gray-3) 100%);
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,59,48,0.04) 0%, transparent 70%);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 16px; border-radius: 100px;
+  background: var(--red-light); color: var(--red);
+  font-size: 13px; font-weight: 600; margin-bottom: 24px;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 {
+  font-size: clamp(40px, 7vw, 80px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.hero h1 .highlight {
+  background: linear-gradient(135deg, var(--red), #ff6b6b);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero p {
+  font-size: clamp(17px, 2vw, 21px); color: var(--gray-1);
+  max-width: 640px; line-height: 1.6; font-weight: 300;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-stats {
+  display: flex; gap: 48px; margin-top: 56px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.hero-stats .stat { text-align: center; }
+.hero-stats .stat-value {
+  font-size: 48px; font-weight: 700; letter-spacing: -0.03em;
+  line-height: 1;
+}
+.hero-stats .stat-value.red { color: var(--red); }
+.hero-stats .stat-value.blue { color: var(--blue); }
+.hero-stats .stat-value.green { color: var(--green); }
+.hero-stats .stat-label {
+  font-size: 13px; color: var(--gray-1); margin-top: 8px; font-weight: 400;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  max-width: 1200px; margin: 0 auto;
+  padding: 100px 24px;
+}
+.section-label {
+  font-size: 13px; font-weight: 600; color: var(--blue);
+  text-transform: uppercase; letter-spacing: 0.06em;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(32px, 4vw, 48px); font-weight: 700;
+  letter-spacing: -0.02em; line-height: 1.15;
+  margin-bottom: 16px;
+}
+.section-desc {
+  font-size: 18px; color: var(--gray-1); max-width: 640px;
+  line-height: 1.65; font-weight: 300;
+}
+
+/* ===== CARDS GRID ===== */
+.cards-grid {
+  display: grid; gap: 20px; margin-top: 48px;
+}
+.cards-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.cards-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.card {
+  background: var(--gray-3); border-radius: var(--radius);
+  padding: 36px; transition: var(--transition);
+  position: relative; overflow: hidden;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.card-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 20px;
+}
+.card-icon.red { background: var(--red-light); }
+.card-icon.blue { background: var(--blue-light); }
+.card-icon.green { background: var(--green-light); }
+.card-icon.orange { background: var(--orange-light); }
+.card-icon.purple { background: var(--purple-light); }
+.card h3 {
+  font-size: 20px; font-weight: 600; margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.card p { font-size: 15px; color: var(--gray-1); line-height: 1.6; }
+.card .card-tag {
+  display: inline-block; padding: 4px 10px; border-radius: 6px;
+  font-size: 12px; font-weight: 600; margin-top: 16px;
+}
+.card .card-tag.red { background: var(--red-light); color: var(--red); }
+.card .card-tag.blue { background: var(--blue-light); color: var(--blue); }
+.card .card-tag.green { background: var(--green-light); color: var(--green); }
+
+/* ===== DATA TABLE ===== */
+.data-table-wrap {
+  margin-top: 40px; border-radius: var(--radius);
+  overflow: hidden; background: var(--white);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.data-table {
+  width: 100%; border-collapse: collapse;
+}
+.data-table th {
+  padding: 14px 20px; text-align: left;
+  font-size: 12px; font-weight: 600;
+  color: var(--gray-1); text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--gray-3);
+  border-bottom: 1px solid var(--gray-2);
+}
+.data-table td {
+  padding: 14px 20px; font-size: 14px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(0,113,227,0.02); }
+.data-table .val { font-weight: 600; font-variant-numeric: tabular-nums; }
+.data-table .val.red { color: var(--red); }
+.data-table .val.blue { color: var(--blue); }
+.data-table .val.green { color: var(--green); }
+.pill {
+  display: inline-block; padding: 3px 10px; border-radius: 100px;
+  font-size: 12px; font-weight: 600;
+}
+.pill.high { background: var(--red-light); color: var(--red); }
+.pill.mid { background: var(--orange-light); color: var(--orange); }
+.pill.low { background: var(--green-light); color: var(--green); }
+
+/* ===== FLOWCHART ===== */
+.flow-section {
+  background: var(--gray-3); padding: 100px 24px;
+}
+.flow-section .inner { max-width: 1200px; margin: 0 auto; }
+
+.flowchart {
+  display: flex; align-items: flex-start; justify-content: center;
+  gap: 0; margin-top: 56px; flex-wrap: wrap;
+}
+.flow-node {
+  text-align: center; position: relative;
+  flex: 0 0 auto;
+}
+.flow-box {
+  width: 150px; padding: 20px 16px;
+  border-radius: var(--radius-sm); background: var(--white);
+  box-shadow: var(--shadow); transition: var(--transition);
+  position: relative;
+}
+.flow-box:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.flow-box .flow-icon {
+  font-size: 28px; margin-bottom: 8px;
+}
+.flow-box h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+.flow-box p { font-size: 11px; color: var(--gray-1); line-height: 1.4; }
+.flow-arrow {
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; align-self: center;
+  color: var(--gray-2); font-size: 20px;
+  padding-top: 0;
+}
+.flow-rate {
+  font-size: 11px; font-weight: 600; margin-top: 8px;
+  padding: 2px 8px; border-radius: 100px;
+  display: inline-block;
+}
+.flow-rate.blue { background: var(--blue-light); color: var(--blue); }
+.flow-rate.green { background: var(--green-light); color: var(--green); }
+.flow-rate.orange { background: var(--orange-light); color: var(--orange); }
+
+/* ===== VERTICAL FLOW ===== */
+.vflow {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0; margin-top: 48px;
+}
+.vflow-node {
+  width: 100%; max-width: 560px;
+  display: flex; align-items: stretch; gap: 20px;
+}
+.vflow-left {
+  flex: 0 0 60px; display: flex; flex-direction: column; align-items: center;
+}
+.vflow-dot {
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700; color: var(--white);
+  flex-shrink: 0;
+}
+.vflow-dot.red { background: var(--red); }
+.vflow-dot.blue { background: var(--blue); }
+.vflow-dot.green { background: var(--green); }
+.vflow-dot.orange { background: var(--orange); }
+.vflow-line {
+  width: 2px; flex: 1; background: var(--gray-2); min-height: 20px;
+}
+.vflow-content {
+  flex: 1; padding: 4px 0 32px;
+}
+.vflow-content h4 { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+.vflow-content p { font-size: 14px; color: var(--gray-1); line-height: 1.5; }
+
+/* ===== PHONE PROTOTYPE ===== */
+.proto-section {
+  background: var(--black); color: var(--white);
+  padding: 100px 24px; overflow: hidden;
+}
+.proto-section .inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; gap: 80px;
+}
+.proto-section .section-label { color: var(--teal); }
+.proto-section .section-title { color: var(--white); }
+.proto-section .section-desc { color: rgba(255,255,255,0.56); }
+.proto-text { flex: 1; }
+.proto-phone-wrap {
+  flex: 0 0 auto; perspective: 1000px;
+}
+.proto-phone {
+  width: 300px; height: 620px;
+  background: #1c1c1e; border-radius: 40px;
+  padding: 12px; position: relative;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 0 0 2px rgba(255,255,255,0.1);
+}
+.proto-screen {
+  width: 100%; height: 100%;
+  background: #fff; border-radius: 30px;
+  overflow: hidden; position: relative;
+}
+.proto-status {
+  height: 44px; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 600; color: var(--black);
+  background: #fafafa;
+}
+.proto-header {
+  padding: 12px 16px; border-bottom: 0.5px solid #e5e5e5;
+  display: flex; align-items: center; gap: 10px;
+  background: #fafafa;
+}
+.proto-header .back { font-size: 20px; color: var(--black); }
+.proto-header h5 { font-size: 15px; font-weight: 600; flex: 1; }
+.proto-header .count { font-size: 13px; color: var(--gray-1); }
+
+.proto-comments { padding: 0; }
+.proto-comment {
+  display: flex; gap: 10px; padding: 14px 16px;
+  border-bottom: 0.5px solid #f0f0f0;
+}
+.proto-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  flex-shrink: 0;
+}
+.proto-comment-body { flex: 1; }
+.proto-comment-name { font-size: 12px; color: #999; font-weight: 500; }
+.proto-comment-text { font-size: 13px; color: #333; margin-top: 3px; line-height: 1.45; }
+.proto-comment-meta {
+  display: flex; align-items: center; gap: 16px; margin-top: 6px;
+  font-size: 11px; color: #bbb;
+}
+
+/* AD card in prototype */
+.proto-ad {
+  margin: 0 16px; padding: 14px;
+  background: #fafafa; border-radius: 12px;
+  border: 0.5px solid #eee; position: relative;
+}
+.proto-ad-header {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.proto-ad-avatar {
+  width: 28px; height: 28px; border-radius: 50%; background: linear-gradient(135deg, #ffd6e0, #ffc4d0);
+}
+.proto-ad-name { font-size: 12px; font-weight: 500; color: #666; }
+.proto-ad-label {
+  margin-left: auto; font-size: 10px; color: #ccc;
+}
+.proto-ad-text {
+  font-size: 13px; color: #333; line-height: 1.5; margin-bottom: 10px;
+}
+.proto-ad-card {
+  width: 100%; aspect-ratio: 16/9; border-radius: 8px;
+  background: linear-gradient(135deg, #ff6b6b, #ff3b30);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 13px; font-weight: 600;
+  position: relative; overflow: hidden;
+}
+.proto-ad-card::after {
+  content: '立即查看 →'; position: absolute; bottom: 10px; right: 12px;
+  font-size: 11px; background: rgba(255,255,255,0.25); padding: 4px 10px;
+  border-radius: 100px;
+}
+.proto-ad-cta { margin-top: 10px; display: flex; justify-content: space-between; align-items: center; }
+.proto-ad-likes { font-size: 11px; color: #bbb; }
+
+/* Feature List on dark bg */
+.feature-list { margin-top: 40px; }
+.feature-item {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.feature-item:last-child { border-bottom: none; }
+.feature-check {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(90,200,250,0.15); color: var(--teal);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0; margin-top: 1px;
+}
+.feature-item h4 { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.feature-item p { font-size: 13px; color: rgba(255,255,255,0.45); }
+
+/* ===== FEEDBACK FLOW ===== */
+.feedback-demo {
+  display: flex; gap: 24px; margin-top: 48px;
+  justify-content: center; flex-wrap: wrap;
+}
+.fb-step {
+  flex: 0 0 280px; background: var(--white);
+  border-radius: var(--radius); padding: 28px;
+  box-shadow: var(--shadow); text-align: center;
+  position: relative;
+}
+.fb-step .step-num {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--blue); color: white;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700;
+  margin: 0 auto 16px;
+}
+.fb-step h4 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.fb-step p { font-size: 13px; color: var(--gray-1); line-height: 1.5; }
+.fb-mockup {
+  margin-top: 16px; background: var(--gray-3); border-radius: var(--radius-sm);
+  padding: 16px; text-align: left;
+}
+.fb-btn {
+  display: block; width: 100%; padding: 10px;
+  border-radius: var(--radius-xs); border: none;
+  font-size: 14px; font-weight: 500; margin-bottom: 8px;
+  cursor: default; text-align: center;
+}
+.fb-btn:last-child { margin-bottom: 0; }
+.fb-btn.positive { background: var(--green-light); color: var(--green); }
+.fb-btn.negative { background: var(--red-light); color: var(--red); }
+.fb-btn.reason { background: var(--white); color: var(--gray-1); border: 1px solid var(--gray-2); }
+.fb-arrow-right {
+  position: absolute; right: -18px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--gray-2); font-size: 24px;
+}
+
+/* ===== REVENUE CALCULATOR ===== */
+.calc-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 48px;
+}
+.calc-card {
+  background: var(--gray-3); border-radius: var(--radius);
+  padding: 32px; text-align: center;
+}
+.calc-card.highlight {
+  background: linear-gradient(135deg, #ff3b30, #ff6b6b);
+  color: white;
+}
+.calc-label { font-size: 13px; color: var(--gray-1); font-weight: 400; margin-bottom: 8px; }
+.calc-card.highlight .calc-label { color: rgba(255,255,255,0.7); }
+.calc-value { font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.calc-card.highlight .calc-value { color: #fff; }
+.calc-unit { font-size: 14px; color: var(--gray-1); margin-top: 4px; }
+.calc-card.highlight .calc-unit { color: rgba(255,255,255,0.7); }
+
+/* ===== AB TEST ===== */
+.ab-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 48px;
+}
+.ab-card {
+  border-radius: var(--radius); padding: 32px;
+  position: relative; overflow: hidden;
+}
+.ab-card.a { background: var(--blue-light); }
+.ab-card.b { background: var(--green-light); }
+.ab-card.c { background: var(--orange-light); }
+.ab-card .ab-letter {
+  font-size: 64px; font-weight: 800; line-height: 1;
+  position: absolute; top: -8px; right: 16px;
+  opacity: 0.1;
+}
+.ab-card h3 { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.ab-card .ab-pct { font-size: 32px; font-weight: 700; margin: 12px 0; }
+.ab-card .ab-pct.blue { color: var(--blue); }
+.ab-card .ab-pct.green { color: var(--green); }
+.ab-card .ab-pct.orange { color: var(--orange); }
+.ab-card p { font-size: 13px; color: var(--gray-1); line-height: 1.5; }
+
+/* ===== TIMELINE ===== */
+.timeline {
+  display: flex; gap: 0; margin-top: 48px;
+  position: relative;
+}
+.timeline::before {
+  content: ''; position: absolute; top: 24px; left: 0; right: 0;
+  height: 3px; background: var(--gray-2); border-radius: 2px;
+}
+.tl-item {
+  flex: 1; text-align: center; position: relative;
+  padding-top: 48px;
+}
+.tl-dot {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--white); border: 3px solid var(--blue);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; color: var(--blue);
+  position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  z-index: 1;
+}
+.tl-dot.active { background: var(--blue); color: var(--white); }
+.tl-item h4 { font-size: 15px; font-weight: 600; margin-top: 8px; }
+.tl-item p { font-size: 12px; color: var(--gray-1); margin-top: 4px; }
+.tl-item .tl-dur {
+  display: inline-block; margin-top: 8px;
+  padding: 3px 10px; border-radius: 100px;
+  background: var(--blue-light); color: var(--blue);
+  font-size: 12px; font-weight: 600;
+}
+
+/* ===== RISK ===== */
+.risk-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 16px; margin-top: 48px;
+}
+.risk-card {
+  display: flex; gap: 16px; padding: 24px;
+  background: var(--gray-3); border-radius: var(--radius-sm);
+  align-items: flex-start;
+}
+.risk-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.risk-icon.high { background: var(--red-light); }
+.risk-icon.mid { background: var(--orange-light); }
+.risk-icon.low { background: var(--green-light); }
+.risk-card h4 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.risk-card p { font-size: 13px; color: var(--gray-1); line-height: 1.45; }
+
+/* ===== BAR CHART ===== */
+.bar-chart {
+  display: flex; align-items: flex-end; gap: 24px;
+  height: 220px; margin-top: 48px;
+  padding: 0 20px 40px;
+  border-bottom: 1px solid var(--gray-2);
+  position: relative;
+}
+.bar-group {
+  flex: 1; display: flex; flex-direction: column;
+  align-items: center; height: 100%; justify-content: flex-end;
+}
+.bar {
+  width: 48px; border-radius: 8px 8px 0 0;
+  transition: height 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+}
+.bar.red { background: linear-gradient(180deg, #ff3b30, #ff6b6b); }
+.bar.blue { background: linear-gradient(180deg, #0071e3, #5ac8fa); }
+.bar.green { background: linear-gradient(180deg, #34c759, #6ee08e); }
+.bar.orange { background: linear-gradient(180deg, #ff9500, #ffb84d); }
+.bar-val {
+  position: absolute; top: -24px; left: 50%; transform: translateX(-50%);
+  font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+.bar-label {
+  margin-top: 12px; font-size: 12px; color: var(--gray-1);
+  text-align: center;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center; padding: 40px 24px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+footer p { font-size: 13px; color: var(--gray-1); }
+
+/* ===== DIVIDER ===== */
+.divider {
+  max-width: 1200px; margin: 0 auto;
+  height: 1px; background: var(--gray-2);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .cards-grid.cols-2, .cards-grid.cols-3, .cards-grid.cols-4,
+  .calc-grid, .ab-cards, .risk-grid { grid-template-columns: 1fr; }
+  .proto-section .inner { flex-direction: column; text-align: center; }
+  .hero-stats { flex-direction: column; gap: 24px; }
+  .timeline { flex-direction: column; gap: 20px; }
+  .timeline::before { display: none; }
+  .tl-item { padding-top: 0; display: flex; align-items: center; gap: 16px; text-align: left; }
+  .tl-dot { position: static; transform: none; }
+  .flowchart { flex-direction: column; align-items: center; }
+  .flow-arrow { transform: rotate(90deg); width: auto; height: 40px; }
+  .feedback-demo { flex-direction: column; align-items: center; }
+  .fb-arrow-right { display: none; }
+  nav .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo"><span>●</span> 红果短剧 PRD V2.0</div>
+    <div class="nav-links">
+      <a href="#overview">概览</a>
+      <a href="#users">用户</a>
+      <a href="#prototype">原型</a>
+      <a href="#flow">流程</a>
+      <a href="#feedback">反馈</a>
+      <a href="#revenue">测算</a>
+      <a href="#abtest">实验</a>
+      <a href="#schedule">排期</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">● PRD V2.0 — 策略产品经理（变现侧）</div>
+  <h1>评论区<span class="highlight">原生广告</span><br>策略</h1>
+  <p>在不打断用户沉浸体验的前提下，将评论区情绪势能转化为商业价值。情绪溢价 × 社交伪装 × oCPM 深层转化。</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-value red">1亿+</div>
+      <div class="stat-label">日活跃用户 (DAU)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value blue">2.75亿</div>
+      <div class="stat-label">月活跃用户 (MAU)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value green">2.01h</div>
+      <div class="stat-label">人均日使用时长</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: 市场概览 -->
+<section id="overview">
+  <div class="section-label">Market Overview</div>
+  <div class="section-title">为什么是评论区？</div>
+  <div class="section-desc">评论区是短剧用户情绪释放的核心场景——日均 PV 超十亿级，却完全未被商业化。</div>
+
+  <div class="cards-grid cols-4 reveal">
+    <div class="card">
+      <div class="card-icon red">🔥</div>
+      <h3>情绪溢价</h3>
+      <p>用户在评论区情绪处于波峰，冲动消费决策极快</p>
+      <span class="card-tag red">CTR +30~50%</span>
+    </div>
+    <div class="card">
+      <div class="card-icon blue">💬</div>
+      <h3>社交伪装</h3>
+      <p>广告伪装为"神评论"，利用社交背书降低信任门槛</p>
+      <span class="card-tag blue">CVR +20~40%</span>
+    </div>
+    <div class="card">
+      <div class="card-icon green">👁️</div>
+      <h3>主动沉浸</h3>
+      <p>用户带着主动预期浏览，广告融入评论流而非打断</p>
+      <span class="card-tag green">反感率 ↓60%</span>
+    </div>
+    <div class="card">
+      <div class="card-icon orange">🎯</div>
+      <h3>场景匹配</h3>
+      <p>剧集题材 × 情绪标签 × 广告类别三维精准匹配</p>
+      <span class="card-tag blue">ROI +15~25%</span>
+    </div>
+  </div>
+
+  <!-- Market bar chart -->
+  <div style="margin-top:80px;" class="reveal">
+    <h3 style="font-size:20px; font-weight:600; margin-bottom:4px;">微短剧市场规模增长</h3>
+    <p style="font-size:14px; color:var(--gray-1);">单位：亿元人民币</p>
+    <div class="bar-chart">
+      <div class="bar-group">
+        <div class="bar red" style="height:40%"><span class="bar-val" style="color:var(--red);">504亿</span></div>
+        <div class="bar-label">2024年</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar red" style="height:55%"><span class="bar-val" style="color:var(--red);">686亿</span></div>
+        <div class="bar-label">2025E</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar red" style="height:80%"><span class="bar-val" style="color:var(--red);">1,200亿</span></div>
+        <div class="bar-label">2026E</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar blue" style="height:25%"><span class="bar-val" style="color:var(--blue);">250亿</span></div>
+        <div class="bar-label">2024 免费</div>
+      </div>
+      <div class="bar-group">
+        <div class="bar blue" style="height:42%"><span class="bar-val" style="color:var(--blue);">533亿</span></div>
+        <div class="bar-label">2025E 免费</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: 用户分析 -->
+<section id="users">
+  <div class="section-label">User Analysis</div>
+  <div class="section-title">用户深度画像</div>
+  <div class="section-desc">基于 DataEye 及 QuestMobile 2025 年报告数据</div>
+
+  <div class="cards-grid cols-3 reveal" style="margin-top:48px;">
+    <div class="card" style="background: linear-gradient(135deg, #fff0ef, #fff8f7);">
+      <div style="font-size:40px; font-weight:800; color:var(--red); margin-bottom:8px;">68%</div>
+      <h3>女性用户主导</h3>
+      <p>女性向素材为主（美妆/服装/日用），男频剧区侧重游戏/网服</p>
+    </div>
+    <div class="card" style="background: linear-gradient(135deg, #e8f2ff, #f0f7ff);">
+      <div style="font-size:40px; font-weight:800; color:var(--blue); margin-bottom:8px;">70%+</div>
+      <h3>40岁以下用户</h3>
+      <p>20-29岁用户粘性 TGI 高达 263，是评论区广告曝光核心人群</p>
+    </div>
+    <div class="card" style="background: linear-gradient(135deg, #edfbf1, #f5fdf8);">
+      <div style="font-size:40px; font-weight:800; color:var(--green); margin-bottom:8px;">14.2%</div>
+      <h3>重度用户占比</h3>
+      <p>日均使用超 2 小时，贡献核心评论区浏览量</p>
+    </div>
+  </div>
+
+  <!-- User segmentation table -->
+  <div class="data-table-wrap reveal" style="margin-top:40px;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>用户分层</th>
+          <th>行为特征</th>
+          <th>占比</th>
+          <th>广告价值定位</th>
+          <th>适配广告</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>重度"吃瓜群众"</strong></td>
+          <td>长篇幅滑动浏览，很少发评</td>
+          <td class="val">~35%</td>
+          <td>曝光主力军（高 Impressions）</td>
+          <td>应用推广 / 小游戏</td>
+        </tr>
+        <tr>
+          <td><strong>高情绪易感人群</strong></td>
+          <td>易被剧情带动，冲动消费极快</td>
+          <td class="val red">~25%</td>
+          <td>CTR + CVR 核心金矿</td>
+          <td>电商推广 / 冲动型商品</td>
+        </tr>
+        <tr>
+          <td><strong>高互动用户</strong></td>
+          <td>重度发评、点赞、回复</td>
+          <td class="val">~20%</td>
+          <td>广告敏感压力测试组</td>
+          <td>保守式投放</td>
+        </tr>
+        <tr>
+          <td><strong>浅度浏览用户</strong></td>
+          <td>仅看前几条评论即关闭</td>
+          <td class="val">~20%</td>
+          <td>曝光价值低，优先级低</td>
+          <td>暂不投放</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- SECTION: 原型图 -->
+<div class="proto-section" id="prototype">
+  <div class="inner">
+    <div class="proto-text">
+      <div class="section-label">Prototype</div>
+      <div class="section-title">评论区广告原型</div>
+      <div class="section-desc">广告以原生评论形式融入信息流，视觉伪装度极高，用户感知自然。</div>
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div><h4>插入位置：第 4-5 条热评之间</h4><p>首屏免打扰，保证基础看评体验</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div><h4>虚拟头像 + 马甲昵称 + 沉浸式文案</h4><p>伪装为带有社交背书的"神评论"</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div><h4>16:9 转化卡片 + "广告 ˅" 合规标识</h4><p>右上角浅灰色标识，合规且不影响沉浸感</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div><h4>防误触：落地页停留 > 3秒才计费</h4><p>保护广告主利益，防止 CPA 飙升</p></div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-check">✓</div>
+          <div><h4>冷启动保护：新用户前 3 天不展示</h4><p>保护新用户留存，避免首次体验受影响</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone mockup -->
+    <div class="proto-phone-wrap">
+      <div class="proto-phone">
+        <div class="proto-screen">
+          <div class="proto-status">9:41</div>
+          <div class="proto-header">
+            <span class="back">‹</span>
+            <h5>评论区</h5>
+            <span class="count">1.2万条评论</span>
+          </div>
+          <div class="proto-comments">
+            <!-- Comment 1 -->
+            <div class="proto-comment">
+              <div class="proto-avatar" style="background:linear-gradient(135deg,#a8e6cf,#88d8b0);"></div>
+              <div class="proto-comment-body">
+                <div class="proto-comment-name">甜甜圈小姐</div>
+                <div class="proto-comment-text">天哪这集也太甜了吧！男主说那句话的时候我直接哭了😭</div>
+                <div class="proto-comment-meta"><span>❤️ 2.3万</span><span>回复 856</span></div>
+              </div>
+            </div>
+            <!-- Comment 2 -->
+            <div class="proto-comment">
+              <div class="proto-avatar" style="background:linear-gradient(135deg,#b8d4e3,#92bbd4);"></div>
+              <div class="proto-comment-body">
+                <div class="proto-comment-name">追剧达人007</div>
+                <div class="proto-comment-text">编剧可以的！节奏越来越好了</div>
+                <div class="proto-comment-meta"><span>❤️ 8,421</span><span>回复 231</span></div>
+              </div>
+            </div>
+            <!-- Comment 3 -->
+            <div class="proto-comment">
+              <div class="proto-avatar" style="background:linear-gradient(135deg,#f9d5e5,#eeac99);"></div>
+              <div class="proto-comment-body">
+                <div class="proto-comment-name">吃瓜星人</div>
+                <div class="proto-comment-text">女二真的好气人！</div>
+                <div class="proto-comment-meta"><span>❤️ 5,102</span><span>回复 98</span></div>
+              </div>
+            </div>
+            <!-- Comment 4 -->
+            <div class="proto-comment">
+              <div class="proto-avatar" style="background:linear-gradient(135deg,#d4a5a5,#c99494);"></div>
+              <div class="proto-comment-body">
+                <div class="proto-comment-name">晚风不晚</div>
+                <div class="proto-comment-text">感觉下一集要反转了吧</div>
+                <div class="proto-comment-meta"><span>❤️ 3,788</span><span>回复 62</span></div>
+              </div>
+            </div>
+            <!-- AD CARD -->
+            <div style="padding:8px 0;">
+              <div class="proto-ad">
+                <div class="proto-ad-header">
+                  <div class="proto-ad-avatar"></div>
+                  <div class="proto-ad-name">甜心好物推荐</div>
+                  <div class="proto-ad-label">广告 ˅</div>
+                </div>
+                <div class="proto-ad-text">看完这集真的好心动💕同款口红色号也太绝了！</div>
+                <div class="proto-ad-card">
+                  ☆ 限时 9.9 元抢同款 ☆
+                </div>
+              </div>
+            </div>
+            <!-- Comment 5 -->
+            <div class="proto-comment">
+              <div class="proto-avatar" style="background:linear-gradient(135deg,#c5cae9,#9fa8da);"></div>
+              <div class="proto-comment-body">
+                <div class="proto-comment-name">小月亮呀</div>
+                <div class="proto-comment-text">第二十集预告看了没？大爆！</div>
+                <div class="proto-comment-meta"><span>❤️ 2,100</span><span>回复 45</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: 广告转化流程 -->
+<div class="flow-section" id="flow">
+  <div class="inner">
+    <div class="section-label">Conversion Flow</div>
+    <div class="section-title">广告转化全链路</div>
+    <div class="section-desc">从曝光到转化再到安全回流，每一步都有数据追踪与风控保障</div>
+
+    <div class="flowchart reveal">
+      <div class="flow-node">
+        <div class="flow-box">
+          <div class="flow-icon">👁️</div>
+          <h4>广告曝光</h4>
+          <p>评论区第4-5条之间</p>
+        </div>
+        <div class="flow-rate blue">100% 曝光</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-box">
+          <div class="flow-icon">👆</div>
+          <h4>有效点击</h4>
+          <p>防误触过滤后的主动点击</p>
+        </div>
+        <div class="flow-rate blue">CTR ≥ 3%</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-box">
+          <div class="flow-icon">🚀</div>
+          <h4>极速拉起</h4>
+          <p>小程序/商城/H5/AppStore</p>
+        </div>
+        <div class="flow-rate green">拉起率 ≥ 95%</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-box">
+          <div class="flow-icon">💰</div>
+          <h4>深层转化</h4>
+          <p>激活/表单/下单</p>
+        </div>
+        <div class="flow-rate green">CVR ≥ 5%</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <div class="flow-box">
+          <div class="flow-icon">🔄</div>
+          <h4>安全回流</h4>
+          <p>用户回到红果 APP</p>
+        </div>
+        <div class="flow-rate orange">≥ 85%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: 反馈机制流程 -->
+<section id="feedback">
+  <div class="section-label">Feedback Mechanism</div>
+  <div class="section-title">双层反馈漏斗</div>
+  <div class="section-desc">参考微信朋友圈广告机制——一级定性，二级归因，精准捕获算法特征</div>
+
+  <div class="feedback-demo reveal">
+    <!-- Step 1 -->
+    <div class="fb-step">
+      <div class="step-num">1</div>
+      <h4>点击"广告 ˅"</h4>
+      <p>用户触发反馈入口</p>
+      <div class="fb-mockup">
+        <div style="text-align:center; font-size:11px; color:#999; margin-bottom:10px;">─ 半屏浮层弹出 ─</div>
+        <div class="fb-btn positive">👍 还不错</div>
+        <div class="fb-btn negative">💔 关闭该广告</div>
+      </div>
+      <div class="fb-arrow-right">→</div>
+    </div>
+    <!-- Step 2 -->
+    <div class="fb-step">
+      <div class="step-num">2</div>
+      <h4>二级归因面板</h4>
+      <p>点击关闭后切换至归因选项</p>
+      <div class="fb-mockup">
+        <div style="text-align:center; font-size:11px; color:#999; margin-bottom:10px;">─ 选择原因 ─</div>
+        <div class="fb-btn reason">不喜欢类似产品</div>
+        <div class="fb-btn reason">不喜欢该品牌</div>
+        <div class="fb-btn reason">重复收到相同素材</div>
+      </div>
+      <div class="fb-arrow-right">→</div>
+    </div>
+    <!-- Step 3 -->
+    <div class="fb-step">
+      <div class="step-num">3</div>
+      <h4>卡片顺滑消失</h4>
+      <p>系统记录风控 Tag，同类素材降权 7-30 天</p>
+      <div class="fb-mockup">
+        <div style="text-align:center; padding:24px 0;">
+          <div style="font-size:32px; margin-bottom:8px;">✅</div>
+          <div style="font-size:13px; color:#999;">已为您关闭该广告</div>
+          <div style="font-size:11px; color:#ccc; margin-top:4px;">下方评论自动向上补位</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: 收入测算 -->
+<section id="revenue">
+  <div class="section-label">Revenue Model</div>
+  <div class="section-title">收入模型测算</div>
+  <div class="section-desc">基于保守假设的日均流水测算</div>
+
+  <div class="calc-grid reveal">
+    <div class="calc-card">
+      <div class="calc-label">评论区日活用户</div>
+      <div class="calc-value">5,000万</div>
+      <div class="calc-unit">DAU 1亿 × 50% 渗透</div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-label">日均曝光量</div>
+      <div class="calc-value">1亿</div>
+      <div class="calc-unit">人均 2 次 × 频控限制</div>
+    </div>
+    <div class="calc-card highlight">
+      <div class="calc-label">预估日均流水</div>
+      <div class="calc-value">300万+</div>
+      <div class="calc-unit">eCPM ≥ 30元 保守估计</div>
+    </div>
+  </div>
+
+  <!-- Goal metrics -->
+  <div class="data-table-wrap reveal" style="margin-top:48px;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>指标类型</th>
+          <th>指标名称</th>
+          <th>V1.0 目标值</th>
+          <th>计算逻辑</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:#f8fbff;">
+          <td><span class="pill" style="background:var(--blue-light);color:var(--blue);">北极星</span></td>
+          <td><strong>评论区 ARPU</strong></td>
+          <td class="val blue">≥ ¥0.05/人/日</td>
+          <td>评论区广告收入 ÷ 评论区日活</td>
+        </tr>
+        <tr style="background:#f8fbff;">
+          <td><span class="pill" style="background:var(--blue-light);color:var(--blue);">北极星</span></td>
+          <td><strong>广告 ROI</strong></td>
+          <td class="val blue">≥ 1.5</td>
+          <td>广告主投放回报比</td>
+        </tr>
+        <tr>
+          <td>过程指标</td>
+          <td>CTR（点击率）</td>
+          <td class="val">≥ 3%</td>
+          <td>行业均值 2% 基础上提升</td>
+        </tr>
+        <tr>
+          <td>过程指标</td>
+          <td>CVR（转化率）</td>
+          <td class="val">≥ 5%</td>
+          <td>有效点击 → 深层转化</td>
+        </tr>
+        <tr>
+          <td>过程指标</td>
+          <td>eCPM</td>
+          <td class="val">≥ ¥30</td>
+          <td>行业基准 + 场景溢价</td>
+        </tr>
+        <tr style="background:var(--red-light);">
+          <td><span class="pill high">护栏</span></td>
+          <td><strong>停留时长下降</strong></td>
+          <td class="val red">< 5%</td>
+          <td>实验组 vs 对照组</td>
+        </tr>
+        <tr style="background:var(--red-light);">
+          <td><span class="pill high">护栏</span></td>
+          <td><strong>安全回流率</strong></td>
+          <td class="val red">≥ 85%</td>
+          <td>跳转后回到 APP 的比例</td>
+        </tr>
+        <tr style="background:var(--red-light);">
+          <td><span class="pill high">护栏</span></td>
+          <td><strong>负面客诉率</strong></td>
+          <td class="val red">< 0.05%</td>
+          <td>负面反馈 ÷ 总曝光</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: AB TEST -->
+<section id="abtest">
+  <div class="section-label">A/B Experiment</div>
+  <div class="section-title">灰度分层实验</div>
+  <div class="section-desc">10% 流量灰度测试，以 ROI 为导向分阶段切量</div>
+
+  <div class="ab-cards reveal">
+    <div class="ab-card a">
+      <div class="ab-letter">A</div>
+      <h3>高沉浸评友</h3>
+      <div class="ab-pct blue">4%</div>
+      <p>重度滑动评论区但极少发评。测试自然 CTR 与容忍极限。</p>
+      <p style="margin-top:8px;"><strong>观测：</strong>CTR、停留时长</p>
+    </div>
+    <div class="ab-card b">
+      <div class="ab-letter">B</div>
+      <h3>高商业价值</h3>
+      <div class="ab-pct green">4%</div>
+      <p>历史有网服下载、电商购买或表单提交记录。测试深层转化率上限。</p>
+      <p style="margin-top:8px;"><strong>观测：</strong>CVR、广告主 ROI</p>
+    </div>
+    <div class="ab-card c">
+      <div class="ab-letter">C</div>
+      <h3>高互动 / 高敏</h3>
+      <div class="ab-pct orange">2%</div>
+      <p>重度发评或频繁拉黑广告的用户。作为压力测试组。</p>
+      <p style="margin-top:8px;"><strong>观测：</strong>负面折叠率、客诉率</p>
+    </div>
+  </div>
+
+  <!-- Rollout path -->
+  <div style="margin-top:64px;" class="reveal">
+    <h3 style="font-size:20px; font-weight:600; margin-bottom:4px;">分阶段灰度路径</h3>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-item">
+      <div class="tl-dot active">1</div>
+      <div>
+        <h4>内测</h4>
+        <p>1% 仅内部人员</p>
+        <span class="tl-dur">1 周</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot active">2</div>
+      <div>
+        <h4>小流量灰度</h4>
+        <p>10% A/B/C 三组</p>
+        <span class="tl-dur">2 周</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">3</div>
+      <div>
+        <h4>中流量灰度</h4>
+        <p>30% 验证规模效应</p>
+        <span class="tl-dur">2 周</span>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot">4</div>
+      <div>
+        <h4>全量发布</h4>
+        <p>100% 持续迭代</p>
+        <span class="tl-dur">持续</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SECTION: 排期 -->
+<section id="schedule">
+  <div class="section-label">Schedule & Risks</div>
+  <div class="section-title">研发排期与风险</div>
+  <div class="section-desc">总计约 8-10 周，关键路径 P0→P1→P2→P4</div>
+
+  <div class="data-table-wrap reveal" style="margin-top:48px;">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>阶段</th>
+          <th>任务内容</th>
+          <th>负责方</th>
+          <th>周期</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="pill" style="background:#e8f2ff;color:#0071e3;">P0</span></td>
+          <td>反馈菜单 UI/UX 高保真稿 + 法务审核</td>
+          <td>产品 / 设计</td>
+          <td class="val">1 周</td>
+        </tr>
+        <tr>
+          <td><span class="pill" style="background:#e8f2ff;color:#0071e3;">P1</span></td>
+          <td>评论区组件插入、动效折叠、防误触判定</td>
+          <td>前端团队</td>
+          <td class="val">2 周</td>
+        </tr>
+        <tr>
+          <td><span class="pill" style="background:#e8f2ff;color:#0071e3;">P2</span></td>
+          <td>巨量引擎 API 对接、转化链路打通</td>
+          <td>后端团队</td>
+          <td class="val">2 周</td>
+        </tr>
+        <tr>
+          <td><span class="pill" style="background:#e8f2ff;color:#0071e3;">P3</span></td>
+          <td>用户画像标签库对接、素材匹配引擎</td>
+          <td>算法团队</td>
+          <td class="val">2 周</td>
+        </tr>
+        <tr>
+          <td><span class="pill" style="background:#e8f2ff;color:#0071e3;">P4</span></td>
+          <td>内测 + 灰度发布 + 全量上线</td>
+          <td>QA + 运营</td>
+          <td class="val">5 周</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Risks -->
+  <div style="margin-top:64px;">
+    <h3 style="font-size:20px; font-weight:600; margin-bottom:4px;">风险评估矩阵</h3>
+  </div>
+  <div class="risk-grid reveal">
+    <div class="risk-card">
+      <div class="risk-icon high">⚠️</div>
+      <div>
+        <h4>合规审核风险 <span class="pill high">高</span></h4>
+        <p>广告标识须符合《互联网广告管理办法》，提测前法务团队完成 Review</p>
+      </div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-icon high">⚠️</div>
+      <div>
+        <h4>用户体验反弹 <span class="pill high">高</span></h4>
+        <p>严格频控 + 护栏指标红线 + 自动熔断机制保障底线</p>
+      </div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-icon mid">⚡</div>
+      <div>
+        <h4>巨量引擎 API 延迟 <span class="pill mid">中</span></h4>
+        <p>提前 2 周启动接口联调，准备降级方案</p>
+      </div>
+    </div>
+    <div class="risk-card">
+      <div class="risk-icon mid">⚡</div>
+      <div>
+        <h4>内容监管收紧 <span class="pill mid">中</span></h4>
+        <p>2026 年监管全面收紧，确保广告内容合规</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>红果短剧 · 评论区原生信息流广告策略 PRD V2.0 · 内部机密文档</p>
+</footer>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth nav active state
+const sections = document.querySelectorAll('section, .proto-section, .flow-section');
+const navLinks = document.querySelectorAll('nav .nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    const rect = sec.getBoundingClientRect();
+    if (rect.top <= 200) current = sec.id;
+  });
+  navLinks.forEach(link => {
+    link.style.color = link.getAttribute('href') === '#' + current ? '#1d1d1f' : '';
+    link.style.fontWeight = link.getAttribute('href') === '#' + current ? '600' : '';
+  });
+});
+</script>
+</body>
+</html>
