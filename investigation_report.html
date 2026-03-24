@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国微短剧行业深度研究报告 2025–2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════ RESET & BASE ═══════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --white: #fafafa;
+  --bg: #ffffff;
+  --black: #1d1d1f;
+  --gray-100: #f5f5f7;
+  --gray-200: #e8e8ed;
+  --gray-400: #86868b;
+  --gray-600: #6e6e73;
+  --blue: #0071e3;
+  --blue-dark: #0077ed;
+  --blue-light: #e8f0fe;
+  --red: #ff3b30;
+  --green: #34c759;
+  --orange: #ff9500;
+  --gradient-hero: linear-gradient(135deg, #1d1d1f 0%, #2c2c2e 40%, #0a2a4a 100%);
+  --gradient-blue: linear-gradient(135deg, #0071e3, #40a0ff);
+  --gradient-text: linear-gradient(90deg, #0071e3, #00c7ff);
+  --radius: 20px;
+  --radius-sm: 12px;
+  --shadow-card: 0 4px 30px rgba(0,0,0,0.06);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.10);
+  --section-gap: 120px;
+  --content-max: 1080px;
+  --content-wide: 1200px;
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: 'Noto Sans SC', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--black);
+  background: var(--bg);
+  line-height: 1.8;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ═══════════════ TYPOGRAPHY ═══════════════ */
+.headline-super {
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.headline-large {
+  font-size: clamp(32px, 4.5vw, 56px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+.headline-medium {
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+.headline-small {
+  font-size: clamp(20px, 2vw, 28px);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.body-large {
+  font-size: 21px;
+  line-height: 1.75;
+  color: var(--gray-600);
+  font-weight: 300;
+}
+.body-regular {
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--gray-600);
+}
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+}
+.gradient-text {
+  background: var(--gradient-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════ LAYOUT ═══════════════ */
+.container { max-width: var(--content-max); margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: var(--content-wide); margin: 0 auto; padding: 0 24px; }
+.section { padding: var(--section-gap) 0; }
+.section-dark { background: var(--black); color: white; }
+.section-gray { background: var(--gray-100); }
+.text-center { text-align: center; }
+
+/* ═══════════════ NAVIGATION ═══════════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  transition: all 0.3s;
+}
+nav .nav-inner {
+  max-width: var(--content-wide);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  height: 52px;
+}
+nav .nav-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--black);
+  letter-spacing: -0.01em;
+}
+nav .nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+nav .nav-links a {
+  font-size: 13px;
+  color: var(--gray-600);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+nav .nav-links a:hover { color: var(--blue); }
+@media (max-width: 768px) {
+  nav .nav-links { display: none; }
+}
+
+/* ═══════════════ HERO ═══════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--gradient-hero);
+  color: white;
+  padding: 100px 24px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,113,227,0.15) 0%, transparent 70%);
+  top: 10%; right: -10%;
+  border-radius: 50%;
+  animation: float 8s ease-in-out infinite;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(0,199,255,0.1) 0%, transparent 70%);
+  bottom: 10%; left: -5%;
+  border-radius: 50%;
+  animation: float 10s ease-in-out infinite reverse;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-30px) scale(1.05); }
+}
+.hero-content { position: relative; z-index: 1; max-width: 800px; }
+.hero .label { color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.hero .headline-super { margin-bottom: 24px; }
+.hero .body-large { color: rgba(255,255,255,0.65); max-width: 600px; margin: 0 auto 48px; }
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 28px;
+}
+.hero-badge .dot {
+  width: 6px; height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ═══════════════ STAT CARDS ═══════════════ */
+.stat-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: -60px;
+  position: relative;
+  z-index: 10;
+}
+.stat-card {
+  background: white;
+  padding: 40px 28px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.stat-card:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+.stat-card:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+.stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); z-index: 2; }
+.stat-number {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-number .unit { font-size: 0.5em; font-weight: 500; color: var(--gray-400); }
+.stat-label {
+  font-size: 14px;
+  color: var(--gray-400);
+  font-weight: 500;
+}
+.stat-change {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--green);
+  margin-top: 6px;
+  padding: 2px 10px;
+  background: rgba(52,199,89,0.08);
+  border-radius: 100px;
+}
+@media (max-width: 768px) {
+  .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  .stat-card:first-child { border-radius: var(--radius) 0 0 0; }
+  .stat-card:nth-child(2) { border-radius: 0 var(--radius) 0 0; }
+  .stat-card:nth-child(3) { border-radius: 0 0 0 var(--radius); }
+  .stat-card:last-child { border-radius: 0 0 var(--radius) 0; }
+}
+
+/* ═══════════════ SECTION HEADERS ═══════════════ */
+.section-header {
+  max-width: 720px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+.section-header .label { margin-bottom: 12px; }
+.section-header .headline-large { margin-bottom: 20px; }
+.section-header .body-large { margin-top: 16px; }
+
+/* ═══════════════ DATA TABLE ═══════════════ */
+.table-wrapper {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  margin: 40px 0;
+}
+.table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-wrapper th {
+  background: var(--black);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 16px 20px;
+  text-align: center;
+  letter-spacing: 0.02em;
+}
+.table-wrapper td {
+  padding: 16px 20px;
+  font-size: 15px;
+  text-align: center;
+  border-bottom: 1px solid var(--gray-200);
+  transition: background 0.2s;
+}
+.table-wrapper tr:last-child td { border-bottom: none; }
+.table-wrapper tbody tr:hover td { background: var(--gray-100); }
+.table-wrapper .highlight-row td {
+  background: rgba(0,113,227,0.04);
+  font-weight: 600;
+  color: var(--blue);
+}
+.table-note {
+  padding: 16px 24px;
+  font-size: 13px;
+  color: var(--gray-400);
+  border-top: 1px solid var(--gray-200);
+  line-height: 1.6;
+}
+@media (max-width: 768px) {
+  .table-wrapper { overflow-x: auto; }
+  .table-wrapper table { min-width: 700px; }
+}
+
+/* ═══════════════ FEATURE GRID ═══════════════ */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.feature-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+.feature-card .icon-circle {
+  width: 52px; height: 52px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.feature-card h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.feature-card p {
+  font-size: 15px;
+  color: var(--gray-600);
+  line-height: 1.7;
+}
+.feature-card .metric {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-200);
+}
+.feature-card .metric-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.feature-card .metric-desc {
+  font-size: 14px;
+  color: var(--gray-400);
+}
+@media (max-width: 768px) {
+  .feature-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════ PLAYER CARDS ═══════════════ */
+.player-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.player-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 36px;
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s;
+  position: relative;
+}
+.player-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.player-rank {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--gray-200);
+  position: absolute;
+  top: 20px; right: 24px;
+  line-height: 1;
+}
+.player-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.player-card .player-sub { font-size: 14px; color: var(--gray-400); margin-bottom: 16px; }
+.player-card .player-data {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: var(--black);
+  line-height: 2;
+}
+.player-card .player-data strong { color: var(--blue); }
+.player-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  background: var(--blue-light);
+  color: var(--blue);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-top: 16px;
+}
+.player-card.card-featured {
+  background: var(--black);
+  color: white;
+  grid-column: span 2;
+}
+.player-card.card-featured .player-rank { color: rgba(255,255,255,0.08); font-size: 72px; }
+.player-card.card-featured .player-sub { color: rgba(255,255,255,0.5); }
+.player-card.card-featured .player-data { color: rgba(255,255,255,0.8); }
+.player-card.card-featured .player-data strong { color: #40a0ff; }
+.player-card.card-featured .player-tag { background: rgba(0,113,227,0.2); color: #40a0ff; }
+@media (max-width: 900px) {
+  .player-grid { grid-template-columns: 1fr; }
+  .player-card.card-featured { grid-column: span 1; }
+}
+
+/* ═══════════════ PAIN POINTS ═══════════════ */
+.pain-list { margin-top: 48px; }
+.pain-item {
+  background: white;
+  border-radius: var(--radius);
+  padding: 48px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-card);
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 32px;
+  align-items: start;
+  transition: transform 0.3s;
+}
+.pain-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.pain-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  background: var(--gradient-blue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pain-item h3 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.pain-item p { font-size: 16px; color: var(--gray-600); line-height: 1.8; }
+.pain-item .pain-quote {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--gray-100);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--blue);
+  font-size: 15px;
+  color: var(--gray-600);
+  font-style: italic;
+}
+.pain-item .pain-data-row {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.pain-item .pain-datum {
+  padding: 12px 0;
+}
+.pain-item .pain-datum .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.02em;
+}
+.pain-item .pain-datum .desc {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-top: 2px;
+}
+@media (max-width: 768px) {
+  .pain-item { grid-template-columns: 1fr; gap: 16px; padding: 32px; }
+}
+
+/* ═══════════════ FUTURE TRACKS ═══════════════ */
+.track-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.track-card {
+  border-radius: var(--radius);
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.track-card:hover { transform: translateY(-4px); }
+.track-card.track-aigc {
+  background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  color: white;
+}
+.track-card.track-overseas {
+  background: linear-gradient(160deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+  color: white;
+}
+.track-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -30%;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.03);
+}
+.track-card .label { color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+.track-card h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+.track-card p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  position: relative;
+}
+.track-card .track-metric {
+  display: flex;
+  gap: 32px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  position: relative;
+}
+.track-card .track-metric .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1;
+}
+.track-card .track-metric .desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+@media (max-width: 768px) {
+  .track-row { grid-template-columns: 1fr; }
+  .track-card { padding: 40px 32px; min-height: auto; }
+}
+
+/* ═══════════════ PEST GRID ═══════════════ */
+.pest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.pest-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 40px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s;
+  border-top: 4px solid transparent;
+}
+.pest-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.pest-card:nth-child(1) { border-top-color: var(--blue); }
+.pest-card:nth-child(2) { border-top-color: var(--green); }
+.pest-card:nth-child(3) { border-top-color: var(--orange); }
+.pest-card:nth-child(4) { border-top-color: #af52de; }
+.pest-card .pest-letter {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+}
+.pest-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+.pest-card ul {
+  list-style: none;
+  padding: 0;
+}
+.pest-card li {
+  font-size: 15px;
+  color: var(--gray-600);
+  line-height: 1.7;
+  padding: 6px 0;
+  padding-left: 16px;
+  position: relative;
+}
+.pest-card li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 14px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gray-400);
+}
+
+/* ═══════════════ STRATEGY SECTION ═══════════════ */
+.strategy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 48px;
+}
+.strategy-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  transition: all 0.3s;
+}
+.strategy-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.strategy-card .strat-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+}
+.strategy-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+.strategy-card ul {
+  list-style: none;
+  text-align: left;
+}
+.strategy-card li {
+  font-size: 14px;
+  color: var(--gray-600);
+  line-height: 1.7;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--gray-200);
+}
+.strategy-card li:last-child { border-bottom: none; }
+@media (max-width: 768px) {
+  .strategy-grid { grid-template-columns: 1fr; }
+  .pest-grid { grid-template-columns: 1fr; }
+}
+
+/* ═══════════════ RISK BANNER ═══════════════ */
+.risk-banner {
+  background: var(--gray-100);
+  border-radius: var(--radius);
+  padding: 48px;
+  margin-top: 48px;
+}
+.risk-banner h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.risk-item {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: white;
+  border-radius: var(--radius-sm);
+}
+.risk-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+.risk-item p { font-size: 15px; color: var(--gray-600); line-height: 1.6; }
+@media (max-width: 768px) { .risk-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════ SOURCES SECTION ═══════════════ */
+.sources-list {
+  margin-top: 32px;
+  columns: 2;
+  column-gap: 40px;
+}
+.source-item {
+  font-size: 14px;
+  color: var(--gray-600);
+  padding: 8px 0;
+  break-inside: avoid;
+  line-height: 1.6;
+}
+.source-item strong { color: var(--black); font-weight: 600; }
+@media (max-width: 768px) { .sources-list { columns: 1; } }
+
+/* ═══════════════ FOOTER ═══════════════ */
+footer {
+  text-align: center;
+  padding: 48px 24px;
+  border-top: 1px solid var(--gray-200);
+  color: var(--gray-400);
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* ═══════════════ SCROLL ANIMATIONS ═══════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ═══════════════ DIVIDER ═══════════════ */
+.section-divider {
+  width: 40px;
+  height: 4px;
+  background: var(--gradient-blue);
+  border-radius: 2px;
+  margin: 0 auto 24px;
+}
+
+/* ═══════════════ OVERSEAS TABLE MINI ═══════════════ */
+.overseas-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+.overseas-metric {
+  text-align: center;
+  padding: 24px 16px;
+  background: white;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+}
+.overseas-metric .val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black);
+  letter-spacing: -0.02em;
+}
+.overseas-metric .desc {
+  font-size: 13px;
+  color: var(--gray-400);
+  margin-top: 4px;
+}
+@media (max-width: 768px) {
+  .overseas-metrics { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-title">微短剧行业报告</div>
+    <ul class="nav-links">
+      <li><a href="#market">市场规模</a></li>
+      <li><a href="#pest">PEST分析</a></li>
+      <li><a href="#players">竞争格局</a></li>
+      <li><a href="#pain">核心痛点</a></li>
+      <li><a href="#future">爆发赛道</a></li>
+      <li><a href="#strategy">战略建议</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge"><span class="dot"></span>数据截至 2026年1月</div>
+    <p class="label">INDUSTRY DEEP-DIVE REPORT</p>
+    <h1 class="headline-super">中国微短剧<br><span class="gradient-text">行业深度研究</span></h1>
+    <p class="body-large">从504亿到900亿，从红果一家独大到海外三年百倍增长。<br>一份覆盖市场、政策、竞争与未来趋势的全景式研究。</p>
+  </div>
+</section>
+
+<!-- ═══════════════ STAT STRIP ═══════════════ -->
+<div class="container-wide">
+  <div class="stat-strip">
+    <div class="stat-card reveal">
+      <div class="stat-number">~900<span class="unit">亿</span></div>
+      <div class="stat-label">2025年市场规模（视听协会口径）</div>
+      <div class="stat-change">↑ 78% YoY</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="stat-number">6.96<span class="unit">亿</span></div>
+      <div class="stat-label">用户规模（2025年6月）</div>
+      <div class="stat-change">↑ 5.1% H1</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="stat-number">2.75<span class="unit">亿</span></div>
+      <div class="stat-label">红果短剧 MAU（12月）</div>
+      <div class="stat-change">DAU破1亿</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="stat-number">$23<span class="unit">亿</span></div>
+      <div class="stat-label">海外累计内购收入</div>
+      <div class="stat-change">↑ 4× YoY</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ SECTION 1: MARKET ═══════════════ -->
+<section class="section" id="market">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">01 — 市场概览</p>
+      <h2 class="headline-large">连续两年<br>超越电影票房</h2>
+      <p class="body-large">中国微短剧市场在过去三年间实现了爆发式增长。据中国网络视听协会最新测算，2025年行业全年产值已接近900亿元，远超此前市场预估的634亿元。微短剧已正式成为与长视频、院线电影并列的三大主流视听内容支柱。</p>
+    </div>
+
+    <div class="table-wrapper reveal">
+      <table>
+        <thead>
+          <tr>
+            <th>年份</th>
+            <th>市场规模（亿元）</th>
+            <th>YoY增速</th>
+            <th>免费模式占比</th>
+            <th>用户规模（亿）</th>
+            <th>数据来源</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2022</td><td>101.7</td><td>—</td><td>&lt;10%</td><td>~3.7</td><td>开源证券</td></tr>
+          <tr><td>2023</td><td>373.9</td><td>+267.7%</td><td>~20%</td><td>5.76（6月）</td><td>艾媒咨询</td></tr>
+          <tr><td>2024</td><td>504.4–505</td><td>+34.9%</td><td>~40%</td><td>6.62（12月）</td><td>视听协会</td></tr>
+          <tr class="highlight-row"><td>2025</td><td>677.9–900</td><td>+34%–78%</td><td>55%–66.3%</td><td>6.96（6月）</td><td>艾媒 / 视听协会</td></tr>
+          <tr><td>2027E</td><td>856.5–1,000</td><td>CAGR~19%</td><td>&gt;70%E</td><td>—</td><td>中传媒 / DataEye</td></tr>
+          <tr><td>2030E</td><td>&gt;1,500</td><td>—</td><td>—</td><td>—</td><td>艾媒咨询</td></tr>
+        </tbody>
+      </table>
+      <div class="table-note">注：2025年市场规模存在多口径差异——艾媒咨询统计677.9亿元，中国网络视听协会最新测算接近900亿元（后者口径更广，含广告分账、品牌定制等全产业链产值）。</div>
+    </div>
+
+    <!-- User Metrics -->
+    <h3 class="headline-small reveal" style="margin-top:64px; margin-bottom:32px;">用户行为特征<span style="color:var(--gray-400); font-weight:400;"> · 2025年最新</span></h3>
+    <div class="feature-grid reveal">
+      <div class="feature-card">
+        <div class="icon-circle" style="background:rgba(0,113,227,0.08); color:var(--blue);">⏱</div>
+        <h3>日均使用时长</h3>
+        <p>微短剧APP人均单日使用时长达120.5分钟（2025年8月），较年初增幅25.9%，已超越长视频应用。</p>
+        <div class="metric">
+          <div class="metric-val" style="color:var(--blue);">120.5<span style="font-size:16px; color:var(--gray-400);"> min</span></div>
+          <div class="metric-desc">人均日使用时长<br>超长视频平台</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle" style="background:rgba(52,199,89,0.08); color:var(--green);">💰</div>
+        <h3>付费意愿</h3>
+        <p>76.9%用户愿意为优质内容付费（CSM调查），三分之二用户预计2025年增加看剧时长。</p>
+        <div class="metric">
+          <div class="metric-val" style="color:var(--green);">76.9<span style="font-size:16px; color:var(--gray-400);">%</span></div>
+          <div class="metric-desc">付费意愿率</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle" style="background:rgba(255,149,0,0.08); color:var(--orange);">🎬</div>
+        <h3>内容供给</h3>
+        <p>2025年1–11月累计上线竖屏剧14余万部（含复投），独立制作上线约4万部，月产量3,000部以上。</p>
+        <div class="metric">
+          <div class="metric-val" style="color:var(--orange);">~4万<span style="font-size:16px; color:var(--gray-400);"> 部</span></div>
+          <div class="metric-desc">2025年独立制作上线</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="icon-circle" style="background:rgba(175,82,222,0.08); color:#af52de;">🏭</div>
+        <h3>产业规模</h3>
+        <p>国内现存微短剧相关企业10.02万家，直接和间接带动就业203万人（北京大学国发院报告）。</p>
+        <div class="metric">
+          <div class="metric-val" style="color:#af52de;">203<span style="font-size:16px; color:var(--gray-400);"> 万人</span></div>
+          <div class="metric-desc">带动就业规模</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overseas -->
+    <h3 class="headline-small reveal" style="margin-top:80px; margin-bottom:16px;">海外市场<span style="color:var(--gray-400); font-weight:400;"> · 2025年Q1–Q3</span></h3>
+    <p class="body-regular reveal" style="margin-bottom:24px;">短剧出海持续狂飙。据Sensor Tower数据，2025年Q1全球短剧应用内购收入逼近7亿美元，同比增长逾4倍。截至2025年3月，累计内购收入逼近23亿美元，累计下载量接近9.5亿次。</p>
+    <div class="overseas-metrics reveal">
+      <div class="overseas-metric"><div class="val">$7亿</div><div class="desc">Q1全球IAP</div></div>
+      <div class="overseas-metric"><div class="val">49%</div><div class="desc">美国市场收入占比</div></div>
+      <div class="overseas-metric"><div class="val">+69%</div><div class="desc">拉美下载量环比增长</div></div>
+      <div class="overseas-metric"><div class="val">$15.25亿</div><div class="desc">1–8月海外总收入</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 2: PEST ═══════════════ -->
+<section class="section section-gray" id="pest">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">02 — PEST分析</p>
+      <h2 class="headline-large">政策、经济、<br>社会与技术</h2>
+    </div>
+    <div class="pest-grid">
+      <div class="pest-card reveal">
+        <div class="pest-letter" style="color:var(--blue);">P — POLITICAL</div>
+        <h3>"监管+扶持"双轮驱动</h3>
+        <ul>
+          <li>《微短剧管理办法》即将以部门规章形式发布，为行业首部专门性法规</li>
+          <li>分类分层审核已全面落地：投资>100万"重点微短剧"由广电总局管理</li>
+          <li>2025年1月份1,500余部违规微短剧被下架</li>
+          <li>14个省（区、市）出台微短剧发展扶持政策</li>
+          <li>广电总局实施"微短剧+"行动计划，赋能文旅、普法、非遗</li>
+        </ul>
+      </div>
+      <div class="pest-card reveal reveal-delay-1">
+        <div class="pest-letter" style="color:var(--green);">E — ECONOMIC</div>
+        <h3>免费模式全面胜出</h3>
+        <ul>
+          <li>免费模式占比约66.3%（视听协会），付费大盘连续下滑</li>
+          <li>2025年投流规模预计达423亿元（+28% YoY）</li>
+          <li>制作成本飙升至60–70万/部，精品制作超百万</li>
+          <li>"番茄系业务"2024年收入超300亿，2025年有望翻倍至600亿</li>
+          <li>剧组规模扩大至40–60人，拍摄周期延长至7–15天</li>
+        </ul>
+      </div>
+      <div class="pest-card reveal reveal-delay-2">
+        <div class="pest-letter" style="color:var(--orange);">S — SOCIAL</div>
+        <h3>用户深度化与银发崛起</h3>
+        <ul>
+          <li>36.19%用户每天都看微短剧，65.78%曾重复观看同一部剧</li>
+          <li>40–59岁用户占比37.3%，60+用户占比15.8%</li>
+          <li>海外"银发题材"异军突起，FlickReels累计收入超2亿元</li>
+          <li>男性用户占比回升至52%（免费模式），性别构成趋于均衡</li>
+        </ul>
+      </div>
+      <div class="pest-card reveal reveal-delay-3">
+        <div class="pest-letter" style="color:#af52de;">T — TECHNOLOGY</div>
+        <h3>AI赋能全链条</h3>
+        <ul>
+          <li>字节跳动2000+标签体系精准匹配，内容曝光转化率达行业3倍</li>
+          <li>阅文集团AI压缩制作周期至10–13天</li>
+          <li>iDrama（掌阅）AI生成剧本+自动剪辑，制作周期压缩至3天</li>
+          <li>AIGC漫剧赛道规模级估达200亿元，"一超三强"格局初现</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 3: COMPETITION ═══════════════ -->
+<section class="section" id="players">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">03 — 竞争格局</p>
+      <h2 class="headline-large">一超多强<br><span class="gradient-text">红果断层领先</span></h2>
+      <p class="body-large">当前国内微短剧市场呈现"一超多强"格局，红果短剧以断层式领先位居行业绝对头部，其余玩家在小程序发行、出海、漫剧等细分赛道差异化竞争。</p>
+    </div>
+
+    <div class="player-grid">
+      <!-- #1 红果 (featured) -->
+      <div class="player-card card-featured reveal">
+        <div class="player-rank">#1</div>
+        <h3>红果短剧</h3>
+        <div class="player-sub">字节跳动 · 国内免费模式绝对领导者</div>
+        <div class="player-data">
+          <strong>10月MAU 2.45亿</strong>，12月MAU 2.75亿<br>
+          <strong>2026年1月DAU突破1亿</strong><br>
+          年分账超30亿，超越B站+优酷排名在线视频第四<br>
+          字节流量生态 + 番茄小说IP + 算法推荐 + 分账机制创新
+        </div>
+        <span class="player-tag">断层式领先</span>
+      </div>
+
+      <!-- #2 点众 -->
+      <div class="player-card reveal reveal-delay-1">
+        <div class="player-rank">#2</div>
+        <h3>点众科技</h3>
+        <div class="player-sub">河马剧场 + DramaBox</div>
+        <div class="player-data">
+          河马剧场MAU <strong>5,000万</strong><br>
+          DramaBox Q1内购 <strong>$1.2亿</strong><br>
+          累计 <strong>$4.5亿</strong>
+        </div>
+        <span class="player-tag">国内+海外双引擎</span>
+      </div>
+
+      <!-- #3 ReelShort -->
+      <div class="player-card reveal reveal-delay-2">
+        <div class="player-rank">#3</div>
+        <h3>中文在线 / 枫叶互动</h3>
+        <div class="player-sub">ReelShort · 海外收入第一名</div>
+        <div class="player-data">
+          Q1内购 <strong>$1.3亿</strong><br>
+          累计 <strong>$4.9亿</strong><br>
+          2024全年收入 <strong>29.1亿元</strong>
+        </div>
+        <span class="player-tag">海外第一</span>
+      </div>
+
+      <!-- #4 九州 -->
+      <div class="player-card reveal">
+        <div class="player-rank">#4</div>
+        <h3>九州文化</h3>
+        <div class="player-sub">ShortMax · 规模化生产</div>
+        <div class="player-data">
+          年产短剧约 <strong>400部</strong><br>
+          17家关联公司<br>
+          ShortMax曾登顶美国市场
+        </div>
+        <span class="player-tag">规模化产能</span>
+      </div>
+
+      <!-- #5 快手 -->
+      <div class="player-card reveal reveal-delay-1">
+        <div class="player-rank">#5</div>
+        <h3>快手</h3>
+        <div class="player-sub">星芒短剧 · 短视频平台#2</div>
+        <div class="player-data">
+          平台短剧日活观众 <strong>2.7亿</strong><br>
+          独立APP体量小<br>
+          2025年6月关停小程序业务
+        </div>
+        <span class="player-tag">下沉市场深耕</span>
+      </div>
+
+      <!-- 海外新锐 -->
+      <div class="player-card reveal reveal-delay-2" style="background:var(--gray-100); box-shadow:none;">
+        <div class="player-rank" style="color:var(--gray-200);">⚡</div>
+        <h3>海外新锐</h3>
+        <div class="player-sub">DramaWave · NetShort · FlickReels</div>
+        <div class="player-data">
+          DramaWave Q1下载 <strong>10×增长</strong><br>
+          NetShort累计收入 <strong>$5,700万</strong><br>
+          FlickReels银发题材 <strong>$2亿+</strong>
+        </div>
+        <span class="player-tag">快速崛起</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 4: PAIN POINTS ═══════════════ -->
+<section class="section section-gray" id="pain">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">04 — 核心痛点</p>
+      <h2 class="headline-large">三大结构性挑战<br>不可忽视</h2>
+    </div>
+
+    <div class="pain-list">
+      <!-- Pain 1 -->
+      <div class="pain-item reveal">
+        <div class="pain-num">01</div>
+        <div>
+          <h3>平台"一家独大"，产业链话语权失衡</h3>
+          <p>这是2025年行业最突出的结构性矛盾。红果MAU达2.45亿，而排名第二的河马剧场MAU仅为5,000万，差距达5倍。爱奇艺CEO龚宇在中国电视剧制作产业大会上公开炮轰红果"滥用市场支配地位，签订排他性协议"。</p>
+          <div class="pain-quote">"跟红果签独家越来越常见，平台话语权越来越大" ——《21世纪经济报道》2025年12月</div>
+          <div class="pain-data-row">
+            <div class="pain-datum"><div class="val">5×</div><div class="desc">红果 vs 河马 MAU差距</div></div>
+            <div class="pain-datum"><div class="val">2.75亿</div><div class="desc">红果12月MAU</div></div>
+            <div class="pain-datum"><div class="val">5,000万</div><div class="desc">河马剧场MAU</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pain 2 -->
+      <div class="pain-item reveal">
+        <div class="pain-num">02</div>
+        <div>
+          <h3>监管收紧，合规成本骤升</h3>
+          <p>《微短剧管理办法》即将以部门规章形式发布，分类分层审核已全面落地。对中小制作方而言，审核周期延长、内容红线收紧意味着更高的合规成本。广电总局已针对"雷人"剧情、"霸总"人设、片名哗众取宠等问题多次发布管理提示，2025年1月份即有1,500余部短剧被下架。</p>
+          <div class="pain-data-row">
+            <div class="pain-datum"><div class="val">1,500+</div><div class="desc">2025.01下架短剧数</div></div>
+            <div class="pain-datum"><div class="val">3级</div><div class="desc">分类分层审核体系</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pain 3 -->
+      <div class="pain-item reveal">
+        <div class="pain-num">03</div>
+        <div>
+          <h3>海外市场"虐赚不赚钱"，高投流挤压利润</h3>
+          <p>尽管海外短剧收入爆发式增长，但绝大多数平台仍未实现盈利。以"短剧上市第一股"Mega Matrix（FlexTV）为例，2024年总收入3,618万美元，但广告支出高达2,255万美元，占收入的62%，全年净亏损1,050万美元。80–90%的海外短剧处于亏损状态。</p>
+          <div class="pain-data-row">
+            <div class="pain-datum"><div class="val">62%</div><div class="desc">Mega Matrix广告占收入比</div></div>
+            <div class="pain-datum"><div class="val">$15–20万</div><div class="desc">海外单部制作成本</div></div>
+            <div class="pain-datum"><div class="val">80–90%</div><div class="desc">海外短剧亏损率</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 5: FUTURE ═══════════════ -->
+<section class="section" id="future">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">05 — 爆发赛道</p>
+      <h2 class="headline-large">两大机会窗口<br><span class="gradient-text">正在开启</span></h2>
+    </div>
+
+    <div class="track-row">
+      <div class="track-card track-aigc reveal">
+        <p class="label">赛道一</p>
+        <h3>AIGC漫剧</h3>
+        <p>规模级估达200亿元，"一超三强"格局初现——抖音集团为"一超"，友和、酱油、魔方三家为"三强"。魔方漫剧月消耗突破2,600万元，漫改作品复爆率达75%，团队2个月内从30人扩至300人。精准切入年轻男性增量市场，与传统真人微短剧的女性受众格局形成互补。</p>
+        <div class="track-metric">
+          <div><div class="val">~200亿</div><div class="desc">赛道规模级估</div></div>
+          <div><div class="val">75%</div><div class="desc">漫改复爆率</div></div>
+        </div>
+      </div>
+      <div class="track-card track-overseas reveal reveal-delay-1">
+        <p class="label">赛道二</p>
+        <h3>东南亚 · 拉美新兴市场</h3>
+        <p>北美市场竞争已极度内卷，东南亚、拉美正成为新的增量主战场。2025年Q1拉美下载量环比+69%达近1亿次，东南亚+61%逼近8,700万次。字节旗下Melolo主打东南亚免费模式三个月即突破百万用户；昆仑万维旗下DramaWave用"付费+免费"双平台策略Q1下载量暴涨10倍。</p>
+        <div class="track-metric">
+          <div><div class="val">+69%</div><div class="desc">拉美下载量QoQ</div></div>
+          <div><div class="val">10×</div><div class="desc">DramaWave Q1增速</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SECTION 6: STRATEGY ═══════════════ -->
+<section class="section section-gray" id="strategy">
+  <div class="container">
+    <div class="section-header reveal">
+      <p class="label">06 — 战略建议</p>
+      <h2 class="headline-large">不同参与方的<br>行动指南</h2>
+    </div>
+
+    <div class="strategy-grid">
+      <div class="strategy-card reveal">
+        <div class="strat-icon">🎬</div>
+        <h3>内容创作方</h3>
+        <ul>
+          <li>积极拥抱免费分账模式，但避免过度依赖单一平台</li>
+          <li>重点布局AIGC漫剧、银发题材、悬疑/非遗等差异化赛道</li>
+          <li>建立IP运营体系，从"单剧爆款"迈向"系列化、品牌化"</li>
+        </ul>
+      </div>
+      <div class="strategy-card reveal reveal-delay-1">
+        <div class="strat-icon">📱</div>
+        <h3>平台方</h3>
+        <ul>
+          <li>创新分账机制吸引优质制作，红果已将最高保底稿费提升至20万元</li>
+          <li>布局海外新兴市场（东南亚、拉美），以免费模式低成本获客</li>
+          <li>期待微信视频号入局，平衡市场结构</li>
+        </ul>
+      </div>
+      <div class="strategy-card reveal reveal-delay-2">
+        <div class="strat-icon">💼</div>
+        <h3>投资方</h3>
+        <ul>
+          <li>重点关注具备AI能力的内容公司与优质IP储备的网文平台</li>
+          <li>警惕"伪增长"——收入增长不等于盈利能力（参考Mega Matrix案例）</li>
+          <li>关注海外新兴市场的窗口期机会（2025–2028年）</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Risk -->
+    <div class="risk-banner reveal">
+      <h3>⚠️ 关键风险提示</h3>
+      <div class="risk-grid">
+        <div class="risk-item">
+          <div class="risk-dot"></div>
+          <p><strong>监管政策不确定性：</strong>《微短剧管理办法》正式稿及实施细则尚未公布，可能影响全行业内容供给及商业模式。</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-dot"></div>
+          <p><strong>平台集中度风险：</strong>红果"一家独大"若被反垄断调查，或微信视频号强势入局，可能重塑全行业竞争格局。</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-dot"></div>
+          <p><strong>流量成本持续上升：</strong>平台间竞争推高获客成本，海外广告支出占收入比达60%以上。</p>
+        </div>
+        <div class="risk-item">
+          <div class="risk-dot"></div>
+          <p><strong>海外合规风险：</strong>各国内容审查标准不一，文化差异可能导致下架风险。美国市场对短剧"抄袭"争议日益增多。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ SOURCES ═══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-divider"></div>
+      <p class="label">数据来源与引用</p>
+    </div>
+    <div class="sources-list reveal">
+      <div class="source-item"><strong>QuestMobile</strong>《2025年中国移动互联网春季/秋季报告》</div>
+      <div class="source-item"><strong>DataEye研究院</strong>《2025年上半年微短剧市场数据洞察》</div>
+      <div class="source-item"><strong>Sensor Tower</strong>《2025年短剧出海市场洞察》</div>
+      <div class="source-item"><strong>中国网络视听协会</strong>《中国微短剧行业发展白皮书（2024/2025）》</div>
+      <div class="source-item"><strong>艾媒咨询</strong>《2025–2029年中国微短剧市场研究报告》</div>
+      <div class="source-item"><strong>《21世纪经济报道》</strong>《短剧市场字节狂奔，腾讯不跟？》（2025.12.13）</div>
+      <div class="source-item"><strong>时代财经</strong>《三个月分账过亿，红果的账本写着字节的短剧野心》</div>
+      <div class="source-item"><strong>每日经济新闻</strong>《红果短剧被质疑"排他"，制作方回应》（2025.02.22）</div>
+      <div class="source-item"><strong>国家广电总局</strong>《关于进一步统筹发展和安全促进网络微短剧行业健康繁荣发展的通知》</div>
+      <div class="source-item"><strong>腾讯新闻</strong>《红果短剧日活破亿》（2026.02.13）</div>
+      <div class="source-item"><strong>剧查查年度产业大会</strong>《2025年微短剧市场规模接近900亿元》</div>
+      <div class="source-item"><strong>新浪财经</strong>《彻底爆了！2025年微短剧市场规模已超电影票房》</div>
+      <div class="source-item"><strong>CSM媒介研究</strong>《微短剧行业发展报告（2025）》</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    中国微短剧行业深度研究报告 · 2025–2026 Updated Edition<br>
+    数据截至2026年1月 · 数据来源：QuestMobile / DataEye / Sensor Tower / 中国网络视听协会 / 艾媒咨询<br>
+    <span style="color:var(--gray-200);">© 2026 Industry Research</span>
+  </div>
+</footer>
+
+<!-- ═══════════════ SCROLL REVEAL SCRIPT ═══════════════ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav shrink on scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(255,255,255,0.92)';
+    } else {
+      nav.style.background = 'rgba(255,255,255,0.72)';
+    }
+  });
+
+  // Animate stat numbers
+  const animateNumber = (el, target, suffix = '') => {
+    let start = 0;
+    const duration = 1500;
+    const startTime = performance.now();
+    const step = (timestamp) => {
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = start + (target - start) * eased;
+      el.textContent = current.toFixed(target % 1 !== 0 ? 2 : 0) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+});
+</script>
+</body>
+</html>
